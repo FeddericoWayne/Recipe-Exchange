@@ -35,6 +35,15 @@
       </div>
       <br>
       <div class="form-group">
+        <label for="taste">Savory or Sweet?</label>
+        <select id="taste">
+          <option value="" selected disabled>Select One</option>
+          <option value="savory">Savory</option>
+          <option value="sweet">Sweet</option>
+        </select>
+      </div>
+      <br>
+      <div class="form-group">
         <p>Enter Recipe Below:</p>
         <textarea class="form-input" id="recipe-text"></textarea>
       </div>
@@ -73,6 +82,14 @@
           <div class="form-group">
             <label for="main-ingredient">Main Ingredient in Recipe:</label>
             <input class="form-input" id="main-ingredient" placeholder="{{recipe.main_ingredient}}">
+          </div>
+          <div class="form-group">
+            <label for="edit-taste">Savory or Sweet?</label>
+            <select id="edit-taste">
+              <option value="" selected disabled>Select One</option>
+              <option value="savory">Savory</option>
+              <option value="sweet">Sweet</option>
+            </select>
           </div>
           <br>
           <div class="form-group">

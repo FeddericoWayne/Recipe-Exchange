@@ -2,6 +2,8 @@
 const editRecipes = document.getElementsByClassName("update-recipe");
 const cancelButtons = document.getElementsByClassName("cancel");
 
+
+
 // handle submitting new project (post)
 const newFormHandler = async (event) => {
     event.preventDefault();
@@ -9,16 +11,17 @@ const newFormHandler = async (event) => {
     const title = document.querySelector('#recipe-name').value.toUpperCase().trim();
     const recipe_text = document.querySelector('#recipe-text').value.trim();
     const main_ingredient = document.querySelector('#main-ingridient').value.trim();
+    const selectedTaste = document.getElementById("taste").value;
 
-    if (title.length ===0 || recipe_text.length ===0 || main_ingredient.length ===0) {
-        window.alert("Please fill out recipe title, main ingredient, and text!");
+    if (title.length ===0 || recipe_text.length ===0 || main_ingredient.length ===0 || selectedTaste.length ===0) {
+        window.alert("Please fill out recipe title, main ingredient, taste, and text!");
         return;
     }
 
-    if (title && recipe_text && main_ingredient) {
+    if (title && recipe_text && main_ingredient && selectedTaste.length) {
         const response = await fetch(`/api/recipes`, {
             method: 'POST',
-            body: JSON.stringify({ title, recipe_text, main_ingredient }),
+            body: JSON.stringify({ title, recipe_text, main_ingredient, selectedTaste }),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -64,7 +67,7 @@ const editButtonHandler = async (event) => {
 
     // assigns recipe ID and save button to variables
     const id = event.target.getAttribute('data-id');
-    const saveButton = event.target.parentElement.nextSibling.nextSibling.children[0].children[6].children[1];
+    const saveButton = event.target.parentElement.nextSibling.nextSibling.children[0].children[7].children[1];
 
 
     // async function to save updated recipe
@@ -73,22 +76,23 @@ const editButtonHandler = async (event) => {
         e.preventDefault();
 
         // select user input texts
-        const updatedName = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value.trim().toUpperCase();
-        const mainIngredient = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value.trim();
+        const updatedName = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value.toUpperCase();
+        const mainIngredient = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value.trim();
         const updatedBody = e.target.parentElement.previousElementSibling.previousElementSibling.children[1].value;
+        const updatedTaste = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value;
 
         // if user misses any input box
-        if (updatedName.length === 0 || mainIngredient.length === 0 || updatedBody.length === 0) {
+        if (updatedName.length === 0 || mainIngredient.length === 0 || updatedBody.length === 0 || updatedTaste.length === 0) {
             window.alert("Please fill out recipe title, main ingredient, and text to continue!");
             return;
         };
 
         // if all three input boxes are filled in
-        if (updatedBody && updatedName && mainIngredient) {
+        if (updatedBody && updatedName && mainIngredient && updatedTaste.length) {
             const updateProject = await fetch(`/api/recipes/${id}`,
                 {
                     method: 'PUT',
-                    body: JSON.stringify({ updatedName, updatedBody, mainIngredient }),
+                    body: JSON.stringify({ updatedName, updatedBody, mainIngredient, updatedTaste }),
                     headers: { 'Content-Type': 'application/json' },
                 });
     
@@ -99,14 +103,14 @@ const editButtonHandler = async (event) => {
                 window.alert('Failed to update post');
             };
         };
-    }
+    } 
 
     // event listener for the update recipe button
-    saveButton.addEventListener("click",saveRecipe);
+    saveButton.addEventListener("click",saveRecipe); 
 
 };
 
-// reloads the dashboard page if users cancel recipe update
+//reloads the dashboard page if users cancel recipe update
 function cancelUpdate() {
     location.reload();
 };
