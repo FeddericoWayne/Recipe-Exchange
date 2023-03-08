@@ -79,6 +79,70 @@ router.get('/recipes', async (req, res) => {
   }
 });
 
+// Load all savory recipes for the /recipes page
+router.get('/recipes/savory', async (req, res) => {
+  try {
+    // Get all recipes and JOIN with user data
+    const recipeData = await Recipe.findAll({
+      where: {
+        taste: "savory"
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['username']
+        },
+        {
+          model: Comment,
+        }
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('recipes', {
+      recipes,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Load all savory recipes for the /recipes page
+router.get('/recipes/sweet', async (req, res) => {
+  try {
+    // Get all recipes and JOIN with user data
+    const recipeData = await Recipe.findAll({
+      where: {
+        taste: "sweet"
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['username']
+        },
+        {
+          model: Comment,
+        }
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('recipes', {
+      recipes,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Login route
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to dashboard route

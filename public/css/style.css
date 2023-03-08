@@ -305,6 +305,11 @@ body {
 }
 
 /* all recipes page styling */
+#filter-title {
+    font-family: 'Ropa Sans', sans-serif;
+    margin-bottom:0;
+}
+
 #all-recipes-title {
     font-family: 'Ropa Sans', sans-serif;
 }

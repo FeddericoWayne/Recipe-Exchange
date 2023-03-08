@@ -1,5 +1,9 @@
 <div class="listOfRecipes">
   <h2 id="all-recipes-title">All Posted Recipes:</h2>
+  <h4 id="filter-title">Filter by Taste:</h4>
+  <button class="submit" id="savory">Savory Recipes</button>
+  <button class="submit" id="sweet">Sweet Recipes</button>
+
   {{#each recipes as |recipe| }}
   <div class="recipe-wrapper">
     <div class="col-md-5">
@@ -17,4 +21,5 @@
     </div>
   </div>
   {{/each}}
+  <script src="/js/filter.js"></script>
 </div>
