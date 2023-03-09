@@ -4,6 +4,8 @@
         "recipe_text": "Melt butter over medium high heat. Add the eggs and cook just until a skin forms, about 10 to 15 seconds. Add the fillings, then start to shake the pan to roll the eggs up and over the cheese. Cook another 10 to 15 seconds where the outside is pale golden and the interior is soft and creamy. Roll it out onto a plate and you're done!",
         "main_ingredient": "Eggs",
         "taste":"savory",
+        "likes":"Janet//Laura//",
+        "dislikes":"Ben//",
         "user_id": 1
     },
     {
@@ -11,6 +13,8 @@
         "recipe_text": "Boil pasta in salt water. Add meat sauce on top. Serve.",
         "main_ingredient": "Beef",
         "taste":"savory",
+        "likes":"",
+        "dislikes":"Devin//",
         "user_id": 2
     },
     {
@@ -18,6 +22,8 @@
         "recipe_text": "Steep black tea in pitcher. Add ice cubes to tea. Squeeze 1 whole lemon into pitcher. Serve.",
         "main_ingredient": "Black Tea",
         "taste":"sweet",
+        "likes":"",
+        "dislikes":"",
         "user_id": 2
     },
     {
@@ -25,6 +31,8 @@
         "recipe_text": "Prep breading. Cover chicken legs with breading throughly. Deep-fry until breading is golden-brown. Serve.",
         "main_ingredient": "Chicken",
         "taste":"savory",
+        "likes":"Ben//",
+        "dislikes":"",
         "user_id": 3
     },
     {
@@ -32,6 +40,8 @@
         "recipe_text": "Boil water in pot. Add instant noodle seasoning pack. Add instant noodles. Add vegetables as desired. Cook for 2 minutes. Serve.",
         "main_ingredient": "Noodles",
         "taste":"savory",
+        "likes":"Laura//",
+        "dislikes":"Janet//",
         "user_id": 4
     }
 ]

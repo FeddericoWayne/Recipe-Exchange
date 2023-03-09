@@ -68,7 +68,7 @@ router.get('/recipes', async (req, res) => {
 
     // Serialize data so the template can read it
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-
+    
     // Pass serialized data and session flag into template
     res.render('recipes', {
       recipes,
@@ -197,9 +197,20 @@ router.get('/recipe/:id', async (req, res) => {
     });
 
     const recipe = recipeData.get({ plain: true });
+    // retrieves the string of user who liked recipe and turns data into a like count
+    const likesArray = recipe.likes.split("//");
+    likesArray.pop();
+    const likesCount = likesArray.length;
+
+    // retrieves the string of user who liked recipe and turns data into a like count
+    const dislikesArray = recipe.dislikes.split("//");
+    dislikesArray.pop();
+    const dislikesCount = dislikesArray.length;
 
     res.render('single-recipe', {
       ...recipe,
+      likesCount,
+      dislikesCount,
       user_id: req.session.user_id,
       logged_in: req.session.logged_in
     });

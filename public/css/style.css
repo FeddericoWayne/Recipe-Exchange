@@ -354,6 +354,50 @@ body {
     box-shadow: 9px 9px rgba(0,0,0,0.5);
 }
 
+#reaction-wrapper {
+    text-align: center;
+    margin-inline:auto;
+    margin-bottom: 35px;
+}
+
+#likes, #dislikes {
+    display: inline;
+    margin-inline: 25px;
+}
+
+.count {
+    color: grey;
+    font-family: 'Ropa Sans', sans-serif;
+    display: inline;
+}
+
+.reaction-button {
+    font-family: 'Ropa Sans', sans-serif;
+    cursor: pointer;
+    color:white;
+    background-color: var(--salmon);
+    margin-top: 10px;
+    margin-inline: 5px;
+    padding: 2px 15px;
+    border: 2px solid var(--nude);
+    border-radius: 15px;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.reaction-button:hover {
+    box-shadow: 3px 3px rgba(0,0,0,0.5);
+    color: black;
+    background-color: white;
+}
+.reaction-button:active {
+    transition:none;
+    border: 2px solid var(--plum);
+    box-shadow: none;
+    color:white;
+    background-color: grey;
+}
+
 #comment-post-wrapper {
     font-family: 'Ropa Sans', sans-serif;
     text-align: center;

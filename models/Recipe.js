@@ -29,6 +29,12 @@ Recipe.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        likes: {
+            type: DataTypes.TEXT,
+        },
+        dislikes: {
+            type:DataTypes.TEXT,
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
