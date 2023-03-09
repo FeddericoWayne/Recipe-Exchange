@@ -7,10 +7,10 @@
 {{#if logged_in}}
 <div id="reaction-wrapper">
   <div id="likes">
-    <button class="reaction-button" id="like">Yum!</button><p class="count">{{likesCount}}</p>
+    <button class="reaction-button" id="like" data-id="{{user_id}}">Yum!</button><p class="count" id="like-count">{{likesCount}}</p>
   </div>
   <div id="dislikes">
-    <button class="reaction-button" id="dislike">Blegh!</button><p class="count">{{dislikesCount}}</p>
+    <button class="reaction-button" id="dislike" data-id="{{user_id}}">Blegh!</button><p class="count" id="dislike-count">{{dislikesCount}}</p>
   </div>
 </div>
 <hr class="hr">
@@ -49,4 +49,5 @@
 </div>
 {{#if logged_in}}
 <script src="/js/comment.js"></script>
+<script src="/js/reaction.js"></script>
 {{/if}}

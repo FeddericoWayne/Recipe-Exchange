@@ -198,12 +198,12 @@ router.get('/recipe/:id', async (req, res) => {
 
     const recipe = recipeData.get({ plain: true });
     // retrieves the string of user who liked recipe and turns data into a like count
-    const likesArray = recipe.likes.split("//");
+    const likesArray = recipe.likes.split("/");
     likesArray.pop();
     const likesCount = likesArray.length;
 
     // retrieves the string of user who liked recipe and turns data into a like count
-    const dislikesArray = recipe.dislikes.split("//");
+    const dislikesArray = recipe.dislikes.split("/");
     dislikesArray.pop();
     const dislikesCount = dislikesArray.length;
 
