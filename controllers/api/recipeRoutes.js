@@ -76,4 +76,37 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
+// updates a recipe like
+router.put('/likes/:id', withAuth, async(req,res)=> {
+  try {
+    
+    const newLike = `${req.body.userId}/`
+
+    const previousLikes = await Recipe.findByPk(req.params.id);
+
+    const previousLikeCount = previousLikes.likes;
+
+    const previousLikesArray = previousLikes.likes.split('/');
+    previousLikesArray.pop();
+
+    if (previousLikesArray.includes(req.body.userId)) {
+      res.status(409).json({message:"user already liked recipe!"});
+      return;
+    } else {
+    
+      const updatedLikes = await Recipe.update({likes:`${previousLikeCount}${newLike}`},{
+        where: {
+          id: req.params.id
+        }
+      });
+
+      res.status(200).json({message:"recipe likes udpated!"});
+    };
+    
+
+  } catch(err) {
+    res.status(400).json(err);
+  }
+})
+
 module.exports = router;
