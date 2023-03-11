@@ -89,9 +89,45 @@ router.put('/likes/:id', withAuth, async(req,res)=> {
     const previousLikesArray = previousLikes.likes.split('/');
     previousLikesArray.pop();
 
+
     if (previousLikesArray.includes(req.body.userId)) {
-      res.status(409).json({message:"user already liked recipe!"});
-      return;
+      
+      for (var i=0;i<previousLikesArray.length; i++) {
+        if (previousLikesArray[i] === req.body.userId) {
+          previousLikesArray.splice(i,1);
+        };
+        
+      };
+
+      if (previousLikesArray.length ===0) {
+        await Recipe.update({likes:""},{
+          where:{
+            id: req.params.id
+          }
+        });
+
+        res.status(200).json({message:"recipe likes updated!"});
+
+        return;
+
+      } else {
+
+        updatedLikes = previousLikesArray.join("/") + "/";
+
+        await Recipe.update({likes:`${updatedLikes}`},{
+          where:{
+            id: req.params.id
+          }
+        });
+  
+        res.status(200).json({message:"recipe likes updated!"});
+  
+        return;
+
+      }
+
+
+
     } else {
     
       const updatedLikes = await Recipe.update({likes:`${previousLikeCount}${newLike}`},{
@@ -123,8 +159,41 @@ router.put('/dislikes/:id', withAuth, async(req,res)=> {
     previousDislikesArray.pop();
 
     if (previousDislikesArray.includes(req.body.userId)) {
-      res.status(409).json({message:"user already disliked recipe!"});
-      return;
+      
+      for (var i=0;i<previousDislikesArray.length; i++) {
+        if (previousDislikesArray[i] === req.body.userId) {
+          previousDislikesArray.splice(i,1);
+        };
+        
+      };
+
+      if (previousDislikesArray.length ===0) {
+        await Recipe.update({dislikes:""},{
+          where:{
+            id: req.params.id
+          }
+        });
+
+        res.status(200).json({message:"recipe likes updated!"});
+
+        return;
+
+      } else {
+        
+        updatedDislikes = previousDislikesArray.join("/") + "/";
+
+        await Recipe.update({dislikes:`${updatedDislikes}`},{
+          where:{
+            id: req.params.id
+          }
+        });
+  
+        res.status(200).json({message:"recipe dislikes updated!"});
+  
+        return;
+
+      }
+
     } else {
     
       const updatedDislikes = await Recipe.update({dislikes:`${previousDislikeCount}${newDislike}`},{
