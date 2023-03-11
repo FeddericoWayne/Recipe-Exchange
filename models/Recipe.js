@@ -31,9 +31,11 @@ Recipe.init(
         },
         likes: {
             type: DataTypes.TEXT,
+            defaultValue: "",
         },
         dislikes: {
             type:DataTypes.TEXT,
+            defaultValue: "",
         },
         user_id: {
             type: DataTypes.INTEGER,

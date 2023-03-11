@@ -198,14 +198,20 @@ router.get('/recipe/:id', async (req, res) => {
 
     const recipe = recipeData.get({ plain: true });
     // retrieves the string of user who liked recipe and turns data into a like count
+
+
+    // TODO: figure out what to do if a recipe's likes and dislikes are null;
+    // MAYBE: change the Model set so the default value of a like/dislike of a recipe is "" instead of null
+    // new recipes have likes and dislikes value of NULL and is throwing errors making single-recipes page not loading
     const likesArray = recipe.likes.split("/");
     likesArray.pop();
     const likesCount = likesArray.length;
 
+
     // retrieves the string of user who liked recipe and turns data into a like count
     const dislikesArray = recipe.dislikes.split("/");
     dislikesArray.pop();
-    const dislikesCount = dislikesArray.length;
+    const dislikesCount = dislikesArray.length; 
 
     res.render('single-recipe', {
       ...recipe,

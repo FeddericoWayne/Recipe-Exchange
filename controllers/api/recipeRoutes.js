@@ -107,6 +107,39 @@ router.put('/likes/:id', withAuth, async(req,res)=> {
   } catch(err) {
     res.status(400).json(err);
   }
-})
+});
+
+// updates a recipe dislike
+router.put('/dislikes/:id', withAuth, async(req,res)=> {
+  try {
+    
+    const newDislike = `${req.body.userId}/`
+
+    const previousDislikes = await Recipe.findByPk(req.params.id);
+
+    const previousDislikeCount = previousDislikes.dislikes;
+
+    const previousDislikesArray = previousDislikes.dislikes.split('/');
+    previousDislikesArray.pop();
+
+    if (previousDislikesArray.includes(req.body.userId)) {
+      res.status(409).json({message:"user already disliked recipe!"});
+      return;
+    } else {
+    
+      const updatedDislikes = await Recipe.update({dislikes:`${previousDislikeCount}${newDislike}`},{
+        where: {
+          id: req.params.id
+        }
+      });
+
+      res.status(200).json({message:"recipe dislikes udpated!"});
+    };
+    
+
+  } catch(err) {
+    res.status(400).json(err);
+  }
+});
 
 module.exports = router;
