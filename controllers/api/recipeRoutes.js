@@ -85,11 +85,15 @@ router.put('/likes/:id', withAuth, async(req,res)=> {
     const previousLikes = await Recipe.findByPk(req.params.id);
 
     const previousLikeCount = previousLikes.likes;
+    const currentDislikes = previousLikes.dislikes;
 
-    const previousLikesArray = previousLikes.likes.split('/');
+    const previousLikesArray = previousLikeCount.split('/');
     previousLikesArray.pop();
 
+    const currentDislikesArray = currentDislikes.split('/');
+    currentDislikesArray.pop();
 
+    // if user already liked the recipe
     if (previousLikesArray.includes(req.body.userId)) {
       
       for (var i=0;i<previousLikesArray.length; i++) {
@@ -126,8 +130,42 @@ router.put('/likes/:id', withAuth, async(req,res)=> {
 
       }
 
+    // if user has disliked recipe before
+    } else if (currentDislikesArray.includes(req.body.userId)) {
+
+      for (var i=0; i<currentDislikesArray.length; i++) {
+        if(currentDislikesArray[i] === req.body.userId) {
+          currentDislikesArray.splice(i,1);
+        }
+      };
+
+      if (currentDislikesArray.length ===0) {
+        await Recipe.update({dislikes:""},{
+          where: {
+            id: req.params.id
+          }
+        });
+
+      } else {
+        const updatedDislikes = currentDislikesArray.join("/") + "/";
+
+        await Recipe.update({dislikes:`${updatedDislikes}`},{
+          where:{
+            id: req.params.id
+          }
+        });
+      };
+
+      const updatedLikes = await Recipe.update({likes:`${previousLikeCount}${newLike}`},{
+        where: {
+          id: req.params.id
+        }
+      });
+
+      res.status(200).json({message:"recipe likes udpated!"});
 
 
+    // updates recipe likes  
     } else {
     
       const updatedLikes = await Recipe.update({likes:`${previousLikeCount}${newLike}`},{
@@ -154,9 +192,13 @@ router.put('/dislikes/:id', withAuth, async(req,res)=> {
     const previousDislikes = await Recipe.findByPk(req.params.id);
 
     const previousDislikeCount = previousDislikes.dislikes;
+    const currentLikes = previousDislikes.likes;
 
-    const previousDislikesArray = previousDislikes.dislikes.split('/');
+    const previousDislikesArray = previousDislikeCount.split('/');
     previousDislikesArray.pop();
+
+    const currentLikesArray = currentLikes.split('/');
+    currentLikesArray.pop();
 
     if (previousDislikesArray.includes(req.body.userId)) {
       
@@ -193,6 +235,40 @@ router.put('/dislikes/:id', withAuth, async(req,res)=> {
         return;
 
       }
+
+      } else if (currentLikesArray.includes(req.body.userId)) {
+
+        for (var i=0; i< currentLikesArray.length; i++) {
+          if (currentLikesArray[i] === req.body.userId) {
+            currentLikesArray.splice(i,1);
+          }
+        };
+
+        if (currentLikesArray.length ===0) {
+          await Recipe.update({likes:""},{
+            where: {
+              id: req.params.id
+            }
+          });
+        } else {
+
+          const updatedLikes = currentLikesArray.join("/") + "/";
+  
+          await Recipe.update({likes:`${updatedLikes}`},{
+            where:{
+              id: req.params.id
+            }
+          });
+        };
+
+        const updatedDislikes = await Recipe.update({dislikes:`${previousDislikeCount}${newDislike}`},{
+          where: {
+            id: req.params.id
+          }
+        });
+  
+        res.status(200).json({message:"recipe dislikes udpated!"});
+  
 
     } else {
     
