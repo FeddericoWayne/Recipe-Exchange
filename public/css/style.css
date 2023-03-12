@@ -783,5 +783,11 @@ body {
     .user-recipe {
         margin-inline: 10px;
     }
+
+    .submit {
+        font-size: 0.7rem;
+        margin-inline: 0px;
+        margin-block: 25px;
+    }
     
 }
