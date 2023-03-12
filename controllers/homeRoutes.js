@@ -68,6 +68,11 @@ router.get('/recipes', async (req, res) => {
 
     // Serialize data so the template can read it
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+
+    // sorts through the recipes array by likes count
+    recipes.sort((a,b) => {
+      return b.likes.split("/").length - a.likes.split("/").length;
+    });
     
     // Pass serialized data and session flag into template
     res.render('recipes', {
@@ -101,6 +106,11 @@ router.get('/recipes/savory', async (req, res) => {
     // Serialize data so the template can read it
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
 
+    // sorts through the recipes array by likes count
+    recipes.sort((a,b) => {
+      return b.likes.split("/").length - a.likes.split("/").length;
+    });
+
     // Pass serialized data and session flag into template
     res.render('recipes', {
       recipes,
@@ -133,6 +143,11 @@ router.get('/recipes/sweet', async (req, res) => {
     // Serialize data so the template can read it
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
 
+    // sorts through the recipes array by likes count
+    recipes.sort((a,b) => {
+      return b.likes.split("/").length - a.likes.split("/").length;
+    });
+
     // Pass serialized data and session flag into template
     res.render('recipes', {
       recipes,
@@ -164,6 +179,11 @@ router.get('/recipes/beverage', async (req, res) => {
 
     // Serialize data so the template can read it
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+
+    // sorts through the recipes array by likes count
+    recipes.sort((a,b) => {
+      return b.likes.split("/").length - a.likes.split("/").length;
+    });
 
     // Pass serialized data and session flag into template
     res.render('recipes', {
