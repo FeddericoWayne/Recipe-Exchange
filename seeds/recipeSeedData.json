@@ -21,7 +21,7 @@
         "title": "LEMON BLACK TEA",
         "recipe_text": "Steep black tea in pitcher. Add ice cubes to tea. Squeeze 1 whole lemon into pitcher. Serve.",
         "main_ingredient": "Black Tea",
-        "taste":"sweet",
+        "taste":"beverage",
         "likes":"1/",
         "dislikes":"",
         "user_id": 2

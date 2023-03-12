@@ -1,6 +1,7 @@
 // selects savory and sweet filter buttons
 const savory = document.getElementById("savory");
 const sweet = document.getElementById("sweet");
+const beverage = document.getElementById("beverage");
 
 
 // function to show only savory recipes
@@ -32,8 +33,23 @@ async function showSweet() {
 
 };
 
+// function to show only sweet recipes
+async function showBeverage() {
+
+    const response = await fetch("/recipes/beverage",{
+        method: 'GET',
+        headers: { "Content-Type":"application/json"}
+    });
+
+    if (response.ok) {
+        window.location.replace('/recipes/beverage');
+    };
+
+};
+
 
 
 // event listeners
 savory.addEventListener("click",showSavory);
 sweet.addEventListener("click",showSweet);
+beverage.addEventListener("click",showBeverage);
