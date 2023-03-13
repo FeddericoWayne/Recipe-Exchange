@@ -8,10 +8,6 @@ const copyButton = document.getElementById("copy");
 const copyWrapper = document.getElementById("copy-wrapper");
 const copyAlert = document.getElementById("copy-alert");
 const recipeText = document.getElementById("recipe-text");
-const emailButton = document.getElementById("email");
-
-
-
 
 
 // updates recipe's like count
@@ -73,14 +69,13 @@ function copyRecipe() {
 
 };
 
-// lets users share recipe via email
-// TODO: create function that opens a new email with title as subject and recipient is blank
-
 
 // event listenters
 likeButton.addEventListener("click",updateLikes);
 dislikeButton.addEventListener("click",updateDislikes);
 copyButton.addEventListener("click",copyRecipe);
+
+
 
 
 

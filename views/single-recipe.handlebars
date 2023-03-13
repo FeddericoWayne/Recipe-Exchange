@@ -5,7 +5,7 @@
   <div id="copy-wrapper">
     <img id="copy" src="/assets/icons/copy.png" alt="copy-recipe">
     <p id="copy-alert">Copy Recipe</p>
-    <a id="email" href="/"><img id="email-icon" src="/assets/icons/email-icon.png" alt="email-recipe"></a>
+    <a id="email" href="mailto:?body={{recipe_text}}&subject=Check out this Recipe for {{title}}"><img id="email-icon" src="/assets/icons/email-icon.png" alt="email-recipe"></a>
     <p id="email-alert">Email Recipe</p>
   </div>
   <textarea id="recipe-text" readonly="true">{{recipe_text}}</textarea>
