@@ -335,6 +335,7 @@ body {
 }
 
 #recipe-text {
+    font-family: 'Gloria Hallelujah', cursive;
     overflow-y: scroll;
     font-size: 1.2rem;
     margin-left:auto;
@@ -358,6 +359,40 @@ body {
     text-align: center;
     margin-inline:auto;
     margin-bottom: 35px;
+}
+
+#copy {
+    height: 15px;
+}
+
+#copy-wrapper {
+    padding-inline: 10px;
+    background-color: transparent;
+    border: 3px solid grey;
+    border-radius: 10px;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+#copy-wrapper:hover {
+    background-color: white;
+    box-shadow: 4px 4px rgba(0,0,0,0.5);
+}
+
+#copy-alert {
+    margin-top:5px;
+    margin-bottom:0;
+    font-size: 0.8rem;
+    width: fit-content;
+    font-family: 'Ropa Sans', sans-serif;
+    color: grey;
+}
+
+#copy-wrapper:active {
+    background-color: black;
+    color:white;
+    box-shadow: none;
+    transition: none;
 }
 
 #likes, #dislikes {

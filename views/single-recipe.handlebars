@@ -2,7 +2,11 @@
   <h2 id="recipe-title">{{{get_emoji}}} {{title}}</h2>
   <h4>This is a {{taste}} recipe!</h4>
   <p class="author">Posted by {{user.username}} on {{format_date createdAt}}</p>
-  <p id="recipe-text">{{recipe_text}}</p>
+  <div id="copy-wrapper">
+    <img id="copy" src="/assets/icons/copy.png" alt="copy-recipe">
+  </div>
+  <p id="copy-alert" style="visibility:hidden">Copy Recipe?</p>
+  <textarea id="recipe-text" readonly="true">{{recipe_text}}</textarea>
 </div>
 {{#if logged_in}}
 <div id="reaction-wrapper">
