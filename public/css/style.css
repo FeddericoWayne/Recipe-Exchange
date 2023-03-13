@@ -361,12 +361,12 @@ body {
     margin-bottom: 35px;
 }
 
-#copy {
-    height: 15px;
-}
-
 #copy-wrapper {
+    display: flex;
+    height:fit-content;
+    row-gap: 20px;
     padding-inline: 10px;
+    padding-top: 9px;
     background-color: transparent;
     border: 3px solid grey;
     border-radius: 10px;
@@ -374,13 +374,25 @@ body {
     transition-duration: 0.3s;
 }
 
+#copy {
+    height: 23px;
+    cursor: pointer;
+}
+
+#email-icon {
+    margin-left: 20px;
+    height: 25px;
+    cursor: pointer;
+}
+
 #copy-wrapper:hover {
     background-color: white;
     box-shadow: 4px 4px rgba(0,0,0,0.5);
 }
 
-#copy-alert {
+#copy-alert,#email-alert {
     margin-top:5px;
+    margin-right: 5px;
     margin-bottom:0;
     font-size: 0.8rem;
     width: fit-content;
