@@ -318,8 +318,14 @@ body {
     text-align: center;
 }
 
+.author, .section-title {
+    font-family: 'Ropa Sans', sans-serif;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
 .author {
-    font-family: 'Ropa Sans', sans-serif;;
+    margin-block: 15px;
 }
 
 /* single recipe page styling */
@@ -334,22 +340,30 @@ body {
     text-align: center;
 }
 
-#recipe-text {
+#recipe-content, #ingredients {
     font-family: 'Gloria Hallelujah', cursive;
     overflow-y: scroll;
     font-size: 1.2rem;
-    margin-left:auto;
-    margin-right:auto;
     padding-inline: 25px;
     padding-block: 45px;
     background-color: var(--custard);
-    border-radius: 25px;
-    width: 85vw;
     transition-property: all;
     transition-duration: 0.3s;
+    width: 65vw;
+    height: 45vh;
+    margin-inline: 5px;
+    border-radius: 15px 15px 0px 15px;
+    border:1px solid black;
+    padding-top:5px;
+    margin-block: 15px;
+    resize:vertical;
 }
 
-#recipe-text:hover {
+#ingredients {
+    height: 5vh;
+}
+
+#recipe-content:hover, #ingredients:hover {
     background-color: white;
     border: 7px solid var(--grapes);
     box-shadow: 9px 9px rgba(0,0,0,0.5);
@@ -535,10 +549,17 @@ body {
     width: 40vw;
 }
 
-#main-ingridient {
-    width: 30vw;
-    height: 1rem;
-    resize:none;
+#main-ingredient {
+    display: block;
+    margin-inline: auto;
+    width: 65vw;
+    height: 5vh;
+    border-radius: 15px 15px 0px 15px;
+    border:1px solid black;
+    padding-top:5px;
+    padding: 10px;
+    margin-top: 15px;
+    resize:vertical;
 }
 
 .previous-titles {
@@ -638,10 +659,11 @@ body {
     width: 65vw;
     height: 35vh;
     margin-inline: 5px;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 15px;
     border:1px solid black;
     padding-top:5px;
-    margin-block: 15px;
+    padding: 10px;
+    margin-top: 0px;
     resize:vertical;
 }
 
@@ -666,17 +688,21 @@ body {
     box-shadow: 5px 5px rgba(0,0,0,0.5);
 }
 
-.update-text {
+.update-text, .update-ingredients {
     width: 60vw;
     height: 40vh;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 15px;
     padding: 10px;
     resize:vertical;
     transition-property: all;
     transition-duration: 0.3s;
 }
 
-.update-text:hover {
+.update-ingredients {
+    height: 5vh;
+}
+
+.update-text:hover, .update-ingredients:hover {
     border: 3px solid var(--leaves);
     box-shadow: 3px 3px rgba(0,0,0,0.5);
 }

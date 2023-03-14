@@ -9,7 +9,7 @@ router.post('/', withAuth, async (req, res) => {
     const newRecipe = await Recipe.create({
       title: req.body.title,
       recipe_text: req.body.recipe_text,
-      main_ingredient: req.body.main_ingredient,
+      ingredients: req.body.ingredients,
       taste: req.body.selectedTaste,
       user_id: req.session.user_id
     });
@@ -47,14 +47,14 @@ router.put('/:id', withAuth, async (req, res) => {
 
     const updatedName = req.body.updatedName;
     const updatedBody = req.body.updatedBody;
-    const mainIngredient = req.body.mainIngredient;
+    const ingredients = req.body.ingredients;
     const updatedTaste = req.body.updatedTaste;
 
     const recipeData = await Recipe.update(
       {
         title: updatedName,
         recipe_text: updatedBody,
-        main_ingredient: mainIngredient,
+        ingredients: ingredients,
         taste: updatedTaste,
         user_id: req.session.user_id
       },

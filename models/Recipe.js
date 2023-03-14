@@ -21,8 +21,8 @@ Recipe.init(
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        main_ingredient: {
-            type: DataTypes.STRING,
+        ingredients: {
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         taste: {

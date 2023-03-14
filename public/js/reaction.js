@@ -7,7 +7,8 @@ const userId = user.dataset.id;
 const copyButton = document.getElementById("copy");
 const copyWrapper = document.getElementById("copy-wrapper");
 const copyAlert = document.getElementById("copy-alert");
-const recipeText = document.getElementById("recipe-text");
+const ingredientText = document.getElementById("ingredients");
+const recipeText = document.getElementById("recipe-content");
 
 
 // updates recipe's like count
@@ -65,7 +66,7 @@ function copyRecipe() {
     },1000);
 
     // copies to browser clipboard
-    navigator.clipboard.writeText(recipeText.value);
+    navigator.clipboard.writeText(`For this recipe you'll need:\n${ingredientText.value}\nHere's how you make it:\n${recipeText.value}`);
 
 };
 

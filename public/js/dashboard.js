@@ -9,19 +9,19 @@ const newFormHandler = async (event) => {
     event.preventDefault();
 
     const title = document.querySelector('#recipe-name').value.toUpperCase().trim();
+    const ingredients = document.querySelector('#main-ingredient').value;
     const recipe_text = document.querySelector('#recipe-text').value.trim();
-    const main_ingredient = document.querySelector('#main-ingridient').value.trim();
     const selectedTaste = document.getElementById("taste").value;
 
-    if (title.length ===0 || recipe_text.length ===0 || main_ingredient.length ===0 || selectedTaste.length ===0) {
+    if (title.length ===0 || recipe_text.length ===0 || ingredients.length ===0 || selectedTaste.length ===0) {
         window.alert("Please fill out recipe title, main ingredient, taste, and text!");
         return;
     }
 
-    if (title && recipe_text && main_ingredient && selectedTaste.length) {
+    if (title && recipe_text && ingredients && selectedTaste.length) {
         const response = await fetch(`/api/recipes`, {
             method: 'POST',
-            body: JSON.stringify({ title, recipe_text, main_ingredient, selectedTaste }),
+            body: JSON.stringify({ title, recipe_text, ingredients, selectedTaste }),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -77,22 +77,22 @@ const editButtonHandler = async (event) => {
 
         // select user input texts
         const updatedName = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value.toUpperCase();
-        const mainIngredient = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value.trim();
+        const ingredients = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value.trim();
         const updatedBody = e.target.parentElement.previousElementSibling.previousElementSibling.children[1].value;
-        const updatedTaste = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value;
+        const updatedTaste = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value;
 
         // if user misses any input box
-        if (updatedName.length === 0 || mainIngredient.length === 0 || updatedBody.length === 0 || updatedTaste.length === 0) {
+        if (updatedName.length === 0 || ingredients.length === 0 || updatedBody.length === 0 || updatedTaste.length === 0) {
             window.alert("Please fill out recipe title, main ingredient, and text to continue!");
             return;
         };
 
         // if all three input boxes are filled in
-        if (updatedBody && updatedName && mainIngredient && updatedTaste.length) {
+        if (updatedBody && updatedName && ingredients && updatedTaste.length) {
             const updateProject = await fetch(`/api/recipes/${id}`,
                 {
                     method: 'PUT',
-                    body: JSON.stringify({ updatedName, updatedBody, mainIngredient, updatedTaste }),
+                    body: JSON.stringify({ updatedName, updatedBody, ingredients, updatedTaste }),
                     headers: { 'Content-Type': 'application/json' },
                 });
     

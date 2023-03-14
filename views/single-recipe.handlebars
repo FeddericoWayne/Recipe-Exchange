@@ -5,10 +5,13 @@
   <div id="copy-wrapper">
     <img id="copy" src="/assets/icons/copy.png" alt="copy-recipe">
     <p id="copy-alert">Copy Recipe</p>
-    <a id="email" href="mailto:?body={{recipe_text}}&subject=Check out this Recipe for {{title}}"><img id="email-icon" src="/assets/icons/email-icon.png" alt="email-recipe"></a>
+    <a id="email" href="mailto:?body=For this recipe you'll need:{{ingredients}}. And here's how you make it: {{recipe_text}}&subject=Check out this Recipe for {{title}}"><img id="email-icon" src="/assets/icons/email-icon.png" alt="email-recipe"></a>
     <p id="email-alert">Email Recipe</p>
   </div>
-  <textarea id="recipe-text" readonly="true">{{recipe_text}}</textarea>
+  <p class="section-title">For this recipe, you'll need:</p>
+  <textarea id="ingredients" readonly="true">{{ingredients}}</textarea>
+  <p class="section-title">And here's how you make it:</p>
+  <textarea id="recipe-content" readonly="true">{{recipe_text}}</textarea>
 </div>
 {{#if logged_in}}
 <div id="reaction-wrapper">

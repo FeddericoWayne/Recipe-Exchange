@@ -30,8 +30,8 @@
       </div>
       <br>
       <div class="form-group">
-        <label for="main-ingredient">Main Ingredient in Recipe:</label>
-        <input class="form-input" id="main-ingridient" placeholder="chicken"></input>
+        <label for="main-ingredient">Ingredients Needed:</label>
+        <textarea class="form-input" id="main-ingredient" placeholder="1 whole chicken"></textarea>
       </div>
       <br>
       <div class="form-group">
@@ -81,10 +81,6 @@
           </div>
           <br>
           <div class="form-group">
-            <label for="main-ingredient">Main Ingredient in Recipe:</label>
-            <input class="form-input" id="main-ingredient" placeholder="{{recipe.main_ingredient}}">
-          </div>
-          <div class="form-group">
             <label for="edit-taste">Savory or Sweet?</label>
             <select id="edit-taste">
               <option value="" selected disabled>Select One</option>
@@ -94,6 +90,10 @@
             </select>
           </div>
           <br>
+          <div class="form-group">
+            <p>Enter Ingredients Below:</p>
+            <textarea class="form-input update-ingredients">{{recipe.ingredients}}</textarea>
+          </div>
           <div class="form-group">
             <p>Enter Recipe Below:</p>
             <textarea class="form-input update-text">{{recipe.recipe_text}}</textarea>
